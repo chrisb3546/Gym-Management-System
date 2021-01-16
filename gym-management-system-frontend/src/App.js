@@ -2,13 +2,21 @@ import React, { Component } from 'react'
 import './App.css';
 import Login from './Components/Login'
 
-export default class App extends Component {
+ class App extends Component {
+
+  state ={
+    currentUser: ""
+  }
+
+  
   render() {
     return (
       <div>
-        <Login/>
+        <h1>Welcome, please login or sign up to continue.</h1>
+        <Login setCurrentUser = {this.state.currentUser}/>
       </div>
     )
   }
 }
+export default App
 
