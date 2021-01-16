@@ -11,15 +11,20 @@ import { Route, Router } from 'react-router-dom'
     currentUser: ""
   }
 
+  setCurrentUser = (user) => {
+    this.setState({
+      currentUser: user
+    })
+    debugger
+  }
   
   render() {
     return (
       <div>
-        <Route exact path='/login' component={Login}/>
-        <Route exact path='/signup' component={Signup}/>
-        <Route exact path='/' component={Home}/>
-        <Home/>
-        
+        <Route exact path='/login' render={()=><Login setCurrentUser={this.setCurrentUser}/>}/>
+        <Route exact path='/signup' ender={()=><Signup setCurrentUser={this.setCurrentUser}/>}/>
+        <Route exact path='/' render={()=><Home currentUser={this.state.currentUser}/>}/>
+       
         
         
       </div>
