@@ -7,16 +7,12 @@ import Signup from './Signup'
 function Nav(props) {
     return (
         <div>
-           <Link to='/login'>Login</Link>
-           <br/>
-            <Link to='/signup'>Signup</Link>
+    {props.currentUser!=null ? <div><h1>User logged in</h1></div> :<div> <Link to='/login'>Login</Link><br/><Link to='/signup'>Signup</Link></div>}
         </div>
     )
 }
 
-Nav.propTypes = {
 
-}
 
 export default Nav
 

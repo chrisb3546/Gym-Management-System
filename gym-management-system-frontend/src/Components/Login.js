@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import Home from './Home'
 
 export default class Login extends Component {
     state = {
@@ -15,20 +16,20 @@ export default class Login extends Component {
     handleSubmit = e =>{
         e.preventDefault()
         this.props.setCurrentUser(this.state.email)
-       
-
     }
     render() {
-        console.log(this.props)
+        console.log("props from login", this.props)
         return (
             <div>
+                {this.props.currentUser != null ? <Home/> :
                 <form onSubmit={this.handleSubmit}>
                     <input type="text" name="email" placeholder="email" value={this.state.email} onChange={this.handleChange}/>
                     <input type="password" name="password" placeholder="password" value={this.state.password} onChange={this.handleChange}/>
                     <input type="submit" value="login"/>
                 </form>
-                <Link to='/'>Home</Link>
+                }
             </div>
+        
         )
     }
 }

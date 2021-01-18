@@ -3,28 +3,30 @@ import './App.css';
 import Login from './Components/Login'
 import Signup from './Components/Signup'
 import Home from './Components/Home'
+import Nav from './Components/Nav'
+import LoggedOut from './Components/LoggedOut'
 import { Route, Router } from 'react-router-dom'
+
 
  class App extends Component {
 
   state ={
-    currentUser: ""
+    currentUser: null
   }
 
   setCurrentUser = (user) => {
     this.setState({
       currentUser: user
     })
-    debugger
   }
   
   render() {
     return (
       <div>
-        <Route exact path='/login' render={()=><Login setCurrentUser={this.setCurrentUser}/>}/>
+        <Route exact path='/login' render={()=><Login currentUser={this.state.currentUser}setCurrentUser={this.setCurrentUser} />}/>
         <Route exact path='/signup' ender={()=><Signup setCurrentUser={this.setCurrentUser}/>}/>
-        <Route exact path='/' render={()=><Home currentUser={this.state.currentUser}/>}/>
-       
+        {this.state.currentUser!= null ? <Route exact path='/' render={()=><Home currentUser={this.state.currentUser}/>}/>:<Route exact path='/' render={()=><LoggedOut currentUser={this.state.currentUser}/>}/>}
+        <Nav currentUser={this.state.currentUser}/>
         
         
       </div>
