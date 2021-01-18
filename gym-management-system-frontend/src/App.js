@@ -24,7 +24,7 @@ import { Route, Router } from 'react-router-dom'
     return (
       <div>
         <Route exact path='/login' render={()=><Login currentUser={this.state.currentUser}setCurrentUser={this.setCurrentUser} />}/>
-        <Route exact path='/signup' ender={()=><Signup setCurrentUser={this.setCurrentUser}/>}/>
+        <Route exact path='/signup' render={()=><Signup setCurrentUser={this.setCurrentUser}/>}/>
         {this.state.currentUser!= null ? <Route exact path='/' render={()=><Home currentUser={this.state.currentUser}/>}/>:<Route exact path='/' render={()=><LoggedOut currentUser={this.state.currentUser}/>}/>}
         <Nav currentUser={this.state.currentUser}/>
         
