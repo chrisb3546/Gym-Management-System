@@ -15,6 +15,10 @@ export default class Login extends Component {
 
     handleSubmit = e =>{
         e.preventDefault()
+        // fetch("http://localhost:3001/login"){
+
+        // }
+
         this.props.setCurrentUser(this.state.email)
     }
     render() {
