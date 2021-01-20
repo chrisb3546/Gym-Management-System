@@ -13,16 +13,37 @@ export default class Login extends Component {
         })
     }
 
+    login = (credentials) =>{
+        fetch("http://localhost:3001/login", {
+            credentials: "include", 
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+    
+            },
+            body: JSON.stringify(credentials)
+        }) 
+        .then(res => res.json())
+        .then(user => {
+            if(user.error){
+                alert(user.error)
+            }
+            else{
+                this.props.setCurrentUser(user)
+            }
+
+        })
+        
+    }
+
+
+
     handleSubmit = e =>{
         e.preventDefault()
-        // fetch("http://localhost:3001/login"){
-
-        // }
-
-        this.props.setCurrentUser(this.state.email)
+        this.login(this.state)
     }
-    render() {
-        console.log("props from login", this.props)
+    render(){
         return (
             <div>
                 {this.props.currentUser != null ? <Home/> :
