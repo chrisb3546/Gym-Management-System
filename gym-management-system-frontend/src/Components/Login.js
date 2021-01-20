@@ -40,6 +40,7 @@ export default class Login extends Component {
 
 
     handleSubmit = e =>{
+        debugger
         e.preventDefault()
         this.login(this.state)
     }

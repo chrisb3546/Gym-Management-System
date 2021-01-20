@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/codahale/bcrypt-ruby.git
+  revision: 4a8fff5dee9872dae0d2f1d2a45ec53c9f4ea964
+  specs:
+    bcrypt (3.1.16)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -56,8 +62,6 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
       zeitwerk (~> 2.2, >= 2.2.2)
-    bcrypt (3.1.16)
-    bcrypt (3.1.16-java)
     bootsnap (1.5.1)
       msgpack (~> 1.0)
     bootsnap (1.5.1-java)
@@ -176,14 +180,13 @@ PLATFORMS
   x86-mswin32
 
 DEPENDENCIES
-  bcrypt (~> 3.1.7)
+  bcrypt!
   bootsnap (>= 1.4.2)
   byebug
   listen (~> 3.2)
   puma (~> 4.1)
   rack-cors
   rails (~> 6.0.3, >= 6.0.3.4)
-  spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3 (~> 1.4)
   tzinfo-data
