@@ -9,11 +9,12 @@ export default class Login extends Component {
     }
     handleChange = e =>{
         this.setState({
-            [e.target.name]:[e.target.value]
+            [e.target.name]:e.target.value
         })
     }
 
     login = (credentials) =>{
+        console.log("credentials are", credentials)
         fetch("http://localhost:3001/login", {
             credentials: "include", 
             method: "POST",
@@ -26,6 +27,7 @@ export default class Login extends Component {
         }) 
         .then(res => res.json())
         .then(user => {
+            
             if(user.error){
                 alert(user.error)
             }
