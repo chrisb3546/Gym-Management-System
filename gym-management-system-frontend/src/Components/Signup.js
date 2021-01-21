@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Home from './Home'
+import HomePage from './HomePage'
 
 export default class Login extends Component {
     state = {
@@ -52,7 +52,7 @@ export default class Login extends Component {
     render() {
         return (
             <div>
-                {this.props.currentUser !== null ? <div> <Home/> </div> :
+                {this.props.currentUser !== null ? <div> <HomePage/> </div> :
                 <div>
                 <h1>Welcome, please create an account!</h1>
                 <form onSubmit={this.handleSubmit}>

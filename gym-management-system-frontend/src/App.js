@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import './App.css';
 import Login from './Components/Login'
 import Signup from './Components/Signup'
-import Home from './Components/Home'
+import HomePage from './Components/HomePage'
 import Nav from './Components/Nav'
 import LoggedOut from './Components/LoggedOut'
 import { Route, Router } from 'react-router-dom'
@@ -60,7 +60,7 @@ import { Route, Router } from 'react-router-dom'
       <div>
         <Route exact path='/login' render={()=><Login currentUser={this.state.currentUser} setCurrentUser={this.setCurrentUser} />}/>
         <Route exact path='/signup' render={()=><Signup currentUser={this.state.currentUser} setCurrentUser={this.setCurrentUser}/>}/>
-        {this.state.currentUser!= null ? <Route exact path='/' render={()=><Home logout={this.logout}/>}/>:<Route exact path='/' render={()=><LoggedOut currentUser={this.state.currentUser}/>}/>}
+        <Route exact path='/' render={()=><HomePage testProp="hello" currentUser={this.state.currentUser}/>}/>
         <Nav currentUser={this.state.currentUser}/>
         
         
