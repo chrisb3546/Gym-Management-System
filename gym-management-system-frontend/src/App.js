@@ -5,7 +5,9 @@ import Signup from './Components/Signup'
 import HomePage from './Components/HomePage'
 import Nav from './Components/Nav'
 import LoggedOut from './Components/LoggedOut'
+import CreateMember from './Components/CreateMember'
 import { Route, Router } from 'react-router-dom'
+import CreateMemberships from './Components/CreateMemberships';
 
 
  class App extends Component {
@@ -61,6 +63,9 @@ import { Route, Router } from 'react-router-dom'
         <Route exact path='/login' render={()=><Login currentUser={this.state.currentUser} setCurrentUser={this.setCurrentUser} />}/>
         <Route exact path='/signup' render={()=><Signup currentUser={this.state.currentUser} setCurrentUser={this.setCurrentUser}/>}/>
         <Route exact path='/' render={()=><HomePage testProp="hello" currentUser={this.state.currentUser}/>}/>
+        <Route exact path='/memberships/new' render={()=><CreateMemberships />}/>
+        <Route exact path='/members/new' render={()=><CreateMember />}/>
+
         <Nav currentUser={this.state.currentUser}/>
         
         

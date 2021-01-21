@@ -1,11 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
+import Nav from './Nav'
 
 function HomePage(props) {
     console.log(props, "HomePage")
     const logout = () => {
-        debugger
+        fetch("http://localhost:3001/logout",{
+            credentials: "include",
+            method: "DELETE"
+        })
     }
     return (
         <div>
@@ -17,7 +21,6 @@ function HomePage(props) {
              : 
              <div> 
                 <h1>Please Log in or Signup</h1>
-                <Link to='/login'>Login</Link><br/><Link to='/signup'>Signup</Link>
                 </div> }
             
         </div>
