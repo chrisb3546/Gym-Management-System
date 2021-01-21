@@ -13,11 +13,23 @@ import CreateMemberships from './Components/CreateMemberships';
  class App extends Component {
 
   state ={
-    currentUser: null
+    currentUser: null,
+    memberships: []
+    
   }
 
   componentDidMount = () => {
     this.findCurrentUser()
+    this.getMemberships()
+  }
+
+  getMemberships = () => {
+    fetch("http://localhost:3001/memberships")
+    .then(res => res.json())
+    .then(memberships => {
+      memberships.forEach(membership => this.setMemberships(membership))
+    }
+      )
   }
 
   findCurrentUser = () => {
@@ -47,6 +59,15 @@ import CreateMemberships from './Components/CreateMemberships';
     this.setState({
       currentUser: user.email
     })
+  }
+
+  setMemberships = (membership) => {
+    if (this.state.currentUser != null){
+      this.setState({
+        memberships: [...this.state.memberships, membership]
+      })
+    }
+    
   }
 
   logout = () => {
