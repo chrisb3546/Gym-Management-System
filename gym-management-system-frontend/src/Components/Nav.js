@@ -13,8 +13,9 @@ function Nav(props) {
     {props.currentUser!=null ? 
     <div>
         <h1>User logged in</h1>
-        <Link to='/memberships/new'>Add New Membership</Link>
-        <Link to='members/new'>Add New Member</Link>
+        <Link to='/newmemberships'>Add New Membership</Link>
+        <Link to='newmembers'>Add New Member</Link>
+        <Link to='/'>Home</Link>
     </div> 
     :
     <div> 
