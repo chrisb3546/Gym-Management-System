@@ -3,7 +3,8 @@ import React, { Component } from 'react'
 class CreateMemberships extends Component {
     state ={
         name:'',
-        price: null
+        price: null,
+        membership:''
     }
 
     handleChange = (e) =>{
@@ -12,7 +13,7 @@ class CreateMemberships extends Component {
         })
 
     }
-
+   
     handleSubmit = (e) => {
         e.preventDefault()
         this.createMembership(this.state)
@@ -29,7 +30,7 @@ class CreateMemberships extends Component {
         })
         .then(res => res.json())
         .then(membership => {
-            console.log(membership)
+            this.props.setMemberships(membership)
         })
     }
    render() {

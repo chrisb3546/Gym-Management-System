@@ -13,15 +13,16 @@ function HomePage(props) {
     }
     return (
         <div>
-            {props.currentUser != null ? 
+            {props.currentUser != null 
+            ? 
             <div>
-            <h1>Logged In</h1>
-            <button onClick={logout}>Log Out</button>
+                <h1>Logged In</h1>
+                <button onClick={logout}>Log Out</button>
             </div>
              : 
              <div> 
                 <h1>Please Log in or Signup</h1>
-                </div> }
+            </div> }
             
         </div>
     )

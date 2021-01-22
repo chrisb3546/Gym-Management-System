@@ -15,7 +15,6 @@ class MembershipsController < ApplicationController
 
   # POST /memberships
   def create
-    byebug
     @membership = Membership.new(membership_params)
 
     if @membership.save

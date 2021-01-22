@@ -15,6 +15,7 @@ class MembersController < ApplicationController
 
   # POST /members
   def create
+    byebug
     @member = Member.new(member_params)
 
     if @member.save

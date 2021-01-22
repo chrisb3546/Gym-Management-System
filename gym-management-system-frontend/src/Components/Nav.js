@@ -7,7 +7,6 @@ import CreateMemberships from './CreateMemberships'
 
 
 function Nav(props) {
-    console.log(props, "nav")
     return (
         <div>
     {props.currentUser!=null ? 

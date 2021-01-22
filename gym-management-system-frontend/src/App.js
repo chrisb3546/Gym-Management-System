@@ -8,12 +8,13 @@ import LoggedOut from './Components/LoggedOut'
 import CreateMember from './Components/CreateMember'
 import { Route, Router } from 'react-router-dom'
 import CreateMemberships from './Components/CreateMemberships';
-
+import Checkbox from './Components/Checkbox'
 
  class App extends Component {
 
   state ={
     currentUser: null,
+    userId: null,
     memberships: []
     
   }
@@ -57,7 +58,8 @@ import CreateMemberships from './Components/CreateMemberships';
 
   setCurrentUser = (user) => {
     this.setState({
-      currentUser: user.email
+      currentUser: user.email,
+      userId: user.id
     })
   }
 
@@ -79,14 +81,15 @@ import CreateMemberships from './Components/CreateMemberships';
 }
   
   render() {
+   
     return (
       <div>
         <Route exact path='/login' render={()=><Login currentUser={this.state.currentUser} setCurrentUser={this.setCurrentUser} />}/>
         <Route exact path='/signup' render={()=><Signup currentUser={this.state.currentUser} setCurrentUser={this.setCurrentUser}/>}/>
         <Route exact path='/' render={()=><HomePage testProp="hello" currentUser={this.state.currentUser}/>}/>
-        <Route exact path='/newmemberships' render={()=><CreateMemberships />}/>
-        <Route exact path='/newmembers' render={()=><CreateMember />}/>
-
+        <Route exact path='/newmemberships' render={()=><CreateMemberships setMemberships={this.setMemberships} />}/>
+        <Route exact path='/newmembers' render={()=><CreateMember memberships={this.state.memberships} currentUserId={this.state.userId} />}/>
+      
         <Nav currentUser={this.state.currentUser}/>
         
         
