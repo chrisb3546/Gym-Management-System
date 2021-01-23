@@ -8,20 +8,40 @@ import LoggedOut from './Components/LoggedOut'
 import CreateMember from './Components/CreateMember'
 import { Route, Router } from 'react-router-dom'
 import CreateMemberships from './Components/CreateMemberships';
-import Checkbox from './Components/Checkbox'
+import Members from './Components/Members'
 
  class App extends Component {
 
   state ={
     currentUser: null,
     userId: null,
-    memberships: []
+    memberships: [],
+    members: []
     
   }
 
   componentDidMount = () => {
     this.findCurrentUser()
     this.getMemberships()
+    this.getMembers()
+  }
+
+  getMembers = () => {
+    debugger
+    fetch("http://localhost:3001/members")
+    .then(res => res.json())
+    .then(members => {
+      members.forEach( member => this.setMembers(member) )
+    })
+  }
+
+  setMembers = (member) => {
+    debugger
+    if(this.state.currentUser != null){
+      this.setState({
+        members: [...this.state.members, member]
+      })
+    }
   }
 
   getMemberships = () => {
@@ -89,7 +109,7 @@ import Checkbox from './Components/Checkbox'
         <Route exact path='/' render={()=><HomePage testProp="hello" currentUser={this.state.currentUser}/>}/>
         <Route exact path='/newmemberships' render={()=><CreateMemberships setMemberships={this.setMemberships} />}/>
         <Route exact path='/newmembers' render={()=><CreateMember memberships={this.state.memberships} currentUserId={this.state.userId} />}/>
-      
+        <Route exact path='/members' render={()=><Members members={this.state.members}/>} />
         <Nav currentUser={this.state.currentUser}/>
         
         
